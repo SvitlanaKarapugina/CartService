@@ -1,0 +1,18 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Intellij
+!.idea/
+.idea/*
+!.idea/runConfigurations
+*.iws
+*.iml
+
+# Maven
+log/
+target/
+
+.gitignore
