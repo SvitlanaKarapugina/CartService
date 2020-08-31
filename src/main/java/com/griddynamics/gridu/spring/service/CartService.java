@@ -1,12 +1,13 @@
 package com.griddynamics.gridu.spring.service;
 
 import com.griddynamics.gridu.spring.entity.Cart;
+import com.griddynamics.gridu.spring.entity.Product;
 import com.griddynamics.gridu.spring.repository.CartRepository;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CartService {
@@ -18,19 +19,31 @@ public class CartService {
         return repository.findAll();
     }
 
-    public Optional<Cart> getCartById(String cardId) {
-        return repository.findById(cardId);
-    }
-
-    public String getAllCartInfo(Cart cart) {
-        return repository.findAll().toString();
+    public Cart getCartById(String cardId) {
+        return repository.findById(cardId).get();
     }
 
     public Cart createCart(Cart cart) {
-        return repository.save(cart);
+        return repository.insert(cart);
     }
 
-    public void deleteCart(Cart cart) {
-        repository.delete(cart);
+    public void deleteCart(String id) {
+        repository.deleteById(id);
+    }
+
+    public void addProductToCart(String cartId, Product product) {
+        Cart cart = repository.findById(cartId).get();
+        cart.getProducts().add(product);
+        repository.save(cart);
+    }
+
+    public void deleteProductFromCart(String cartId, String productId) {
+        Cart cart = repository.findById(cartId).get();
+        var product = cart.getProducts()
+                .stream()
+                .filter(x -> x.getName().equals(productId))
+                .findFirst();
+        cart.getProducts().remove(product.get());
+        repository.save(cart);
     }
 }

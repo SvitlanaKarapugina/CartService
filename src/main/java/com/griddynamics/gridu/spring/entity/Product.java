@@ -1,14 +1,22 @@
 package com.griddynamics.gridu.spring.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Builder;
+import lombok.Data;
 
-@Document
+@Data
+@Builder
 public class Product {
-    @Id
-    private String id;
 
-    public Product(String name) {
-       this.id = name;
+    private String name;
+    private int price;
+    private int quantity;
+
+    protected Product() {
+    }
+
+    public Product(String name, int price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
 }

@@ -1,42 +1,36 @@
 package com.griddynamics.gridu.spring.entity;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+@Data
 @Document
 public class Cart {
 
     @Id
-    private String cartId;
-    private int quantity;
-    private String productName;
-    private Set<Product> products;
+    private String id;
+    private String cartName;
+    private List<Product> products;
 
-    public Cart() {
+    protected Cart() {
+        this.products = new ArrayList<>();
     }
 
-    public Cart(String cartId, int quantity, String name) {
-        super();
-        this.cartId = cartId;
-        this.quantity = quantity;
-        this.productName = name;
-    }
-
-    public Cart(String cartId, int quantity, Set products) {
-        super();
-        this.cartId = cartId;
-        this.quantity = quantity;
+    public <T> Cart(String cartName, List<Product> products) {
+        this.cartName = cartName;
         this.products = products;
     }
 
-    public void addProduct(Product product) {
+   /* public void addProduct(Product product) {
         products.add(product);
-    }
+    }*/
 
     @Override
     public String toString() {
-        return "Cart [cartId=" + cartId + ", quantity=" + quantity + ", products=" + products + "]";
+        return "Cart [cartId=" + id + ", cartName=" + cartName + "]";
     }
 }

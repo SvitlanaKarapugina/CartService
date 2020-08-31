@@ -2,7 +2,7 @@
 Spring+mongoDB REST app
 Technical requirements:
 
-Web application should contains 3 layers
+Web application should contain 3 layers
 Controller
 Service
 Repository
