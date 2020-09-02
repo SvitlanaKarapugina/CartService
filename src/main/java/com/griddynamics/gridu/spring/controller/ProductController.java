@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@org.springframework.web.bind.annotation.RestController("rest")
-@RequestMapping("/products")
+//@org.springframework.web.bind.annotation.RestController("rest")
+//@RequestMapping("/products")
 public class ProductController {
     @Autowired
     ProductService productService;
