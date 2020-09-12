@@ -2,11 +2,13 @@ package com.griddynamics.gridu.spring.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 @Data
-@Builder
 public class Product {
 
+    @Id
+    private String productId;
     private String name;
     private int price;
     private int quantity;

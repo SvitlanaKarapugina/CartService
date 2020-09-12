@@ -7,10 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
-//@org.springframework.web.bind.annotation.RestController("rest")
-//@RequestMapping("/products")
+@org.springframework.web.bind.annotation.RestController("product")
+@RequestMapping("/products")
 public class ProductController {
     @Autowired
     ProductService productService;
@@ -18,8 +19,8 @@ public class ProductController {
     //Create a new product
     @PostMapping(name = "createProduct", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody Product product) {
-        productService.createProduct(product);
+    public Product createProduct(@RequestBody Product product) {
+        return productService.createProduct(product);
     }
 
     //Get a product info by id
@@ -28,7 +29,13 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
-    //Delete cart by id
+    //Get all products
+    @GetMapping(name = "getProductById", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Product> getAllProducts() {
+        return productService.findAll();
+    }
+
+    //Delete product by id
     @DeleteMapping(name = "deleteProduct", path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteProduct(@PathVariable("id") String id) {
         productService.deleteProduct(id);

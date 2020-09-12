@@ -25,10 +25,6 @@ public class Cart {
         this.products = products;
     }
 
-   /* public void addProduct(Product product) {
-        products.add(product);
-    }*/
-
     @Override
     public String toString() {
         return "Cart [cartId=" + id + ", cartName=" + cartName + "]";

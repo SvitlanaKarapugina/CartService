@@ -17,6 +17,22 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+
+            <!-- Build an executable JAR -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.griddynamics.gridu.spring.CartApplication</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -65,6 +81,11 @@
             <scope>provided</scope>
         </dependency>
 
-    </dependencies>
+  <!--      <dependency>
+            <groupId>com.griddynamics.qa</groupId>
+            <artifactId>sprimber-spring-boot-starter</artifactId>
+            <version>1.1.2</version>
+        </dependency>-->
 
+    </dependencies>
 </project>

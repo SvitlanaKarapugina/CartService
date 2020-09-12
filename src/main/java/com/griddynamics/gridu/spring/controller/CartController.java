@@ -19,8 +19,8 @@ public class CartController {
     //Create a new cart
     @PostMapping(name = "createCart", path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCart(@RequestBody Cart cart) {
-        cartService.createCart(cart);
+    public Cart createCart(@RequestBody Cart cart) {
+       return cartService.createCart(cart);
     }
 
     //Get a cart by id
@@ -43,8 +43,9 @@ public class CartController {
 
     //Add product to Cart
     @PostMapping(name = "addProductToCart", path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void addProductToCart(@PathVariable("id") String id, @RequestBody Product product) {
+    public Product addProductToCart(@PathVariable("id") String id, @RequestBody Product product) {
         cartService.addProductToCart(id, product);
+        return product;
     }
 
     //Get all products on cart
