@@ -3,7 +3,6 @@ package com.griddynamics.gridu.spring.service;
 import com.griddynamics.gridu.spring.entity.Cart;
 import com.griddynamics.gridu.spring.entity.Product;
 import com.griddynamics.gridu.spring.repository.CartRepository;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,10 @@ public class CartService {
 
     public Cart getCartById(String cardId) {
         return repository.findById(cardId).get();
+    }
+
+    public Cart getFirstCart() {
+        return repository.findAll().get(0);
     }
 
     public Cart createCart(Cart cart) {

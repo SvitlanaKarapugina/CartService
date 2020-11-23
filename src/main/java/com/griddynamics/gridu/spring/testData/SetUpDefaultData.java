@@ -27,13 +27,14 @@ public class SetUpDefaultData implements CommandLineRunner {
         this.productRepository.deleteAll();
         List<Cart> items = new ArrayList<>();
         List<Product> products = new ArrayList<>();
-        items.add(new Cart(UUID.randomUUID().toString(), Arrays.asList(new Product("polo", 15, 1))));
-        items.add(new Cart(UUID.randomUUID().toString(), Arrays.asList(new Product("jeans", 45, 1))));
-        items.add(new Cart(UUID.randomUUID().toString(), Arrays.asList(new Product("rainbow", 5, 1))));
-        items.add(new Cart(UUID.randomUUID().toString(), Arrays.asList(new Product("milk", 5, 2))));
-        products.add(new Product("testP1", 5, 2));
-        products.add(new Product("testP2", 15, 1));
-        products.add(new Product("testP3", 905, 1));
+        items.add(new Cart(UUID.randomUUID().toString(), Arrays.asList(new Product("3", "polo", 15, 1), new Product("11", "jean", 20, 1),
+                new Product("10", "coat", 20, 1))));
+        items.add(new Cart(UUID.randomUUID().toString(), Arrays.asList(new Product("4", "jeans", 45, 1))));
+        items.add(new Cart(UUID.randomUUID().toString(), Arrays.asList(new Product("5", "rainbow", 5, 1))));
+        items.add(new Cart(UUID.randomUUID().toString(), Arrays.asList(new Product("6", "milk", 5, 2))));
+        products.add(new Product("7", "testP1", 5, 2));
+        products.add(new Product("8", "testP2", 15, 1));
+        products.add(new Product("9", "testP3", 905, 1));
         this.productRepository.saveAll(products);
         this.repository.saveAll(items);
     }

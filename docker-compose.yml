@@ -9,6 +9,6 @@ services:
   api:
     image: api-docker-image
     ports:
-      - 9091:8080
+      - 9091:8089
     links:
       - api-database

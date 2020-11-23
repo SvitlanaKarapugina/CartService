@@ -20,7 +20,11 @@ public class ProductController {
     @PostMapping(name = "createProduct", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Product createProduct(@RequestBody Product product) {
-        return productService.createProduct(product);
+        if (productService.findAll().stream()
+                .filter(p -> p.getName().equals(product.getName()))
+                .findAny().isPresent()) return productService.updateProduct(product);
+        else
+            return productService.createProduct(product);
     }
 
     //Get a product info by id

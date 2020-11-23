@@ -29,6 +29,12 @@ public class CartController {
         return cartService.getCartById(id);
     }
 
+    //Get a cart by id
+    @GetMapping(name = "getFirstCart", path = "/0", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Cart getFirstCart() {
+        return cartService.getFirstCart();
+    }
+
     //Delete cart by id
     @DeleteMapping(name = "deleteCart", path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteContact(@PathVariable("id") String id) {

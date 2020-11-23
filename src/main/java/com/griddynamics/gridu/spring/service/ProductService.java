@@ -29,6 +29,19 @@ public class ProductService {
         return repository.insert(product);
     }
 
+    //Update item
+    public Product updateProduct(Product product) {
+        Product update = findAll().stream()
+                .filter(p -> p.getName().equals(product.getName()))
+                .findFirst()
+                .get();
+        update.setPrice(product.getPrice());
+        update.setQuantity(update.getQuantity() + product.getQuantity());
+        repository.delete(update);
+        repository.insert(update);
+        return update;
+    }
+
     //Delete item
     public void deleteProduct(String id) {
         repository.deleteById(id);

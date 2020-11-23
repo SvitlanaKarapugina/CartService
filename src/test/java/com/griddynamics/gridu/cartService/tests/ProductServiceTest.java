@@ -22,7 +22,7 @@ public class ProductServiceTest {
 
     @Test
     public void testCreateProduct() {
-        Product product = new Product("testP1", 5, 2);
+        Product product = new Product("1","testP1", 5, 2);
         productService.createProduct(product);
         assertThat(product)
                 .describedAs("Product should be in product list.")
@@ -31,7 +31,7 @@ public class ProductServiceTest {
 
     @Test
     public void testGetProductInfo() {
-        Product product = new Product("testP1", 5, 2);
+        Product product = new Product("2","testP1", 5, 2);
         productService.createProduct(product);
         Optional<Product> product2 = productService.getProductById(product.getProductId());
         assertThat(product2.get())
